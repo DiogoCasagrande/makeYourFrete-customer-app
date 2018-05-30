@@ -1,0 +1,1433 @@
+{
+	"info": {
+		"name": "TP-Link copy",
+		"_postman_id": "81ff68d7-9e09-49f3-b746-1e07905a1462",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"description": null,
+			"item": [
+				{
+					"name": "Login - Marceline",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a595ff91-bab5-482d-9558-d05eaa31c1b3",
+								"type": "text/javascript",
+								"exec": [
+									"//Set urls",
+									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
+									"",
+									"",
+									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9eb40c48-8342-4210-9032-3192e80b7b10",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    //Set token @Deprecated",
+									"    //var jsonData = JSON.parse(responseBody);",
+									"    //pm.globals.set(\"Authorization\", jsonData.token);",
+									"",
+									"    var access_token = postman.getResponseHeader(\"Access-Token\");",
+									"    pm.environment.set(\"Authorization\", access_token);",
+									"    var refresh_token = postman.getResponseHeader(\"Refresh-Token\");",
+									"    pm.environment.set(\"refresh_token\", refresh_token);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"login\": \"line@poggers.com.br\",\n   \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/auth",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro Marceline",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed44cf74-36a7-4203-beb2-b6bd0a20429c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    //Set token",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.globals.set(\"Authorization\", jsonData.token);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Marceline Abadeer\",\r\n   \"cpf\": \"32014447586\",\r\n   \"email\": \"line12@poggers.com.br\",\r\n   \"contactNumber\": \"1154857548\",\r\n   \"password\": \"123456\",\r\n   \"company\":{\r\n\t   \"name\": \"poggers\",\r\n\t   \"cnpj\": \"42801891000125\",\r\n\t   \"idState\": 1,\r\n\t   \"idCompanyType\": 1,\r\n\t   \"idCompanyPosition\": 1\r\n   }\r\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/auth/signup",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "52146057-4502-4e49-bff5-aa7b0b8daab9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    //Set token @Deprecated",
+									"    //var jsonData = JSON.parse(responseBody);",
+									"    //pm.globals.set(\"Authorization\", jsonData.token);",
+									"",
+									"    var access_token = postman.getResponseHeader(\"Access-Token\");",
+									"    pm.environment.set(\"Authorization\", access_token);",
+									"    var refresh_token = postman.getResponseHeader(\"Refresh-Token\");",
+									"    pm.environment.set(\"refresh_token\", refresh_token);",
+									"});",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ee6b76eb-d5b5-42f7-96eb-f0785167bd5d",
+								"type": "text/javascript",
+								"exec": [
+									"//Set urls",
+									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
+									"",
+									"",
+									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "UK_7xyi34i31xehayqd3heubave8"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/auth/token",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"token"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a595ff91-bab5-482d-9558-d05eaa31c1b3",
+								"type": "text/javascript",
+								"exec": [
+									"//Set urls",
+									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
+									"",
+									"",
+									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9eb40c48-8342-4210-9032-3192e80b7b10",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    //Set token @Deprecated",
+									"    //var jsonData = JSON.parse(responseBody);",
+									"    //pm.globals.set(\"Authorization\", jsonData.token);",
+									"",
+									"    var access_token = postman.getResponseHeader(\"Access-Token\");",
+									"    pm.environment.set(\"Authorization\", access_token);",
+									"    var refresh_token = postman.getResponseHeader(\"Refresh-Token\");",
+									"    pm.environment.set(\"refresh_token\", refresh_token);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"login\": \"line@poggers.com.br\",\n   \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/auth/logout",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Senha",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8e7cb85-3f3d-4d1e-9018-df21fbaea3cc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"vezi.dev@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/auth/recover",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"recover"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Training",
+			"description": null,
+			"item": [
+				{
+					"name": "Trainings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/trainings?limit=10",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"trainings"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"equals": true
+								},
+								{
+									"key": "after",
+									"value": "2",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "8",
+									"equals": true,
+									"disabled": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "09 Trainning Level",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/levels/:idLevel/trainings?",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"levels",
+								":idLevel",
+								"trainings"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "2",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "8",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"equals": true,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "idLevel",
+									"value": "1"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "11 Trainning Intro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/trainings/:idTraining/intro",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"trainings",
+								":idTraining",
+								"intro"
+							],
+							"variable": [
+								{
+									"key": "idTraining",
+									"value": "1"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "12 Trainning Attachment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/trainings/:idTraining/attachments?after=1&limit=3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"trainings",
+								":idTraining",
+								"attachments"
+							],
+							"query": [
+								{
+									"key": "after",
+									"value": "1",
+									"equals": true
+								},
+								{
+									"key": "before",
+									"value": "8",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3",
+									"equals": true
+								}
+							],
+							"variable": [
+								{
+									"key": "idTraining",
+									"value": "1"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"description": null,
+			"item": [
+				{
+					"name": "Videos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/videos?limit=5&idTraining=1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5",
+									"equals": true
+								},
+								{
+									"key": "after",
+									"value": "6",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "9",
+									"equals": true,
+									"disabled": true
+								},
+								{
+									"key": "idTraining",
+									"value": "1",
+									"equals": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"equals": false,
+									"disabled": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Level",
+			"description": null,
+			"item": [
+				{
+					"name": "08 All level Trainings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/levels",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"levels"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"description": null,
+			"item": [
+				{
+					"name": "16 Level questionnaire",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7bee072-6e03-489a-9a43-2dcaaf0be473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0aeb2d2e-99ee-4f8f-9ba0-1ceaa4be4fcc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/tests",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"tests"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"description": null,
+			"item": [
+				{
+					"name": "Create - News",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"nameasasdd testeasd\",\r\n  \"title\": \"titleasd testeasd\",\r\n  \"newsDetails\":{\r\n    \"description\": \"<title>asdasdasdasdasdas</title> \",\r\n    \"url\":\"\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/news/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"news",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get - News",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/news/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"1"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get - AllNews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/news/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"news",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"description": null,
+			"item": [
+				{
+					"name": "Post - createFeedback",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\":\"text teste testeasdasda\",\n\t\"idTraining\":1\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/feedback/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"feedback",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get - Feedback",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/feedback/3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"feedback",
+								"3"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get - AllFeedback",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/feedback/?idTraining=1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"feedback",
+								""
+							],
+							"query": [
+								{
+									"key": "idTraining",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Distributor",
+			"description": null,
+			"item": [
+				{
+					"name": "Get - DistributorFindAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/distributor/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"distributor",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Post - Distributor Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Distributor teste\" \n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/distributor/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"distributor",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"description": null,
+			"item": [
+				{
+					"name": "Get - ProductFIndAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/product",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Post - ProductCreate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Product name teste\",\n  \"description\":\"Production desc teste\",\n  \"promotional\":true,\n  \"spiff\": 10,\n  \"status\":\"ativo\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/product",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get - ProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"update product name teste\",\n\t\"description\":\"Production desc teste\",\n\t\"promotional\":true,\n\t\"spiff\": 10\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/product/6",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"6"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Product delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/product/6",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"6"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderProduct",
+			"description": null,
+			"item": [
+				{
+					"name": "POST - OrderProductCreate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"quantity\": 10,\n   \"value\": 5.0,\n   \"idOrderTpLink\": 1\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/orderproduct",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"orderproduct"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderTpLink",
+			"description": null,
+			"item": [
+				{
+					"name": "Post - Order Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/order/?idDistributor=1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"order",
+								""
+							],
+							"query": [
+								{
+									"key": "idDistributor",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - Order Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{local}}/api/order/?idOrder=1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"order",
+								""
+							],
+							"query": [
+								{
+									"key": "idOrder",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AboutApp",
+			"description": "",
+			"item": [
+				{
+					"name": "Get - AboutApp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{local}}/api/aboutapp/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"aboutapp",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post - AboutApp Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bannerUrl\":\"\",\n\t\"phone\":\"(11)1234-5612\",\n\t\"email\":\"email@email.com.br\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/aboutapp/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"aboutapp",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put - AboutApp update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idAboutApp\":1,\n\t\"bannerUrl\":\"\",\n\t\"phone\":\"(11)4321-5612\",\n\t\"email\":\"email@email.com.br\"\n}"
+						},
+						"url": {
+							"raw": "{{local}}/api/aboutapp/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"api",
+								"aboutapp",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
