@@ -58,8 +58,8 @@ $ react-native run-android
 
 Rodando a aplicaçao profissional.
 
-$ cd Documentos
-$ git clone https://github.com/DiogoCasagrande/makeYourFrete-professional-app.git
-$ cd makeYourFrete-professional-app
-$ npm install
-$ react-native run-android
+$ cd Documentos<br/>
+$ git clone https://github.com/DiogoCasagrande/makeYourFrete-professional-app.git<br/>
+$ cd makeYourFrete-professional-app<br/>
+$ npm install<br/>
+$ react-native run-android<br/>
