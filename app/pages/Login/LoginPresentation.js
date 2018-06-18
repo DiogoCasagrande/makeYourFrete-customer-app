@@ -40,33 +40,33 @@ export default class LoginPresentation extends Component {
    */
    //Functions and Calls
   login(){
-    // try{
-    //   const requestInfo = {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       login: this.state.user,
-    //       password: this.state.password
-    //     }),
-    //     headers: new Headers({
-    //       'Content-type': 'application/json',
-    //     })
-    //   }
-    //   fetch('http://url-login', requestInfo)
-    //   .then(response => {
-    //       if(response.ok){
-    //           token = response.headers.get('Access-Token');
-    //           AsyncStorage.setItem('token:key', token);
-    //           AsyncStorage.getItem('token:key').then(tokenKey => console.warn(tokenKey));
+    try{
+      const requestInfo = {
+        method: 'POST',
+        body: JSON.stringify({
+          login: this.state.user,
+          password: this.state.password
+        }),
+        headers: new Headers({
+          'Content-type': 'application/json',
+        })
+      }
+      fetch('http://127.0.0.1:8080/api/v1/companies/auth', requestInfo)
+      .then(response => {
+          if(response.ok){
+              token = response.headers.get('Access-Token');
+              AsyncStorage.setItem('token:key', token);
+              AsyncStorage.getItem('token:key').then(tokenKey => console.warn(tokenKey));
               this.props.navigation.navigate('drawerStack');              
-    //       }else{
-    //         Alert.alert('Incorrect user or password. Please try again.');
-    //       }
-    //   }).catch(error => {
-    //     console.warn(error)
-    //   }); 
-    // }catch(Exception ){
-    //   Alert.alert('Incorrect user or password. Please try again.');
-    // }
+          }else{
+            Alert.alert('Incorrect user or password. Please try again.');
+          }
+      }).catch(error => {
+        console.warn(error)
+      }); 
+    }catch(Exception ){
+      Alert.alert('Incorrect user or password. Please try again.');
+    }
   }
 
   //Rendered Elements

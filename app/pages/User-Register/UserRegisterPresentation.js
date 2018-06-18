@@ -67,6 +67,7 @@ onSelect(value, label) {
       const requestInfo = {
         method: 'POST',
         body: JSON.stringify({
+          data:{
           name:this.state.name,
           cnpj:this.state.cnpj,
           opening:this.state.opening,
@@ -77,19 +78,20 @@ onSelect(value, label) {
             postcode: this.state.postcode,
             number: this.state.number,
             complement: this.state.complement
-          }
+          }}
         }),
 
         headers: new Headers({
           'Content-type': 'application/json',
         })
       }
-      fetch('http://127.0.0.1:8080/api/v1/admins', requestInfo)
+      fetch('http://127.0.0.1:8080/api/v1/companies', requestInfo)
       .then(response => {
           if(response.ok){
               Alert.alert("user created successfully")
               this.props.navigation.navigate('Login');              
           }else{
+            console.log(response)
             Alert.alert('some data was entered incorrectly. Please try again.');
           }
       }).catch(error => {
