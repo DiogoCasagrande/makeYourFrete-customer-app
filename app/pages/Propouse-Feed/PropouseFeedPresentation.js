@@ -9,7 +9,7 @@ import Moment from 'moment';
 export default class PropouseFeedPresentation extends Component {
     
     state = {
-        news:[],
+        propouse:[],
         currentOrientation: '',
         orientationDegress: 0,
         isLandscape: false,

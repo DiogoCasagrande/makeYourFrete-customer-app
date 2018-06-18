@@ -35,20 +35,20 @@ export default class UserRegisterPresentation extends Component {
   })
   
   state = {
-    states:[],
-    companyPosition:[],
-    companyType:[],
     currentOrientation: '',
     orientationDegress: 0,
     isLandscape: false,
  
     name:"",
-    cpf:"",
-    email:"",
-    contactNumber:"",
+    cnpj:"",
+    opening:"",
+    telephone:"",
     password:"",
-    confirmPassword:"",
-}
+    email:"",
+    postcode: "",
+    number: "",
+    complement: ""
+  }
 
 
 onTextChanged(text) {
@@ -63,6 +63,41 @@ onSelect(value, label) {
   }
 
   send(){
+    try{
+      const requestInfo = {
+        method: 'POST',
+        body: JSON.stringify({
+          name:this.state.name,
+          cnpj:this.state.cnpj,
+          opening:this.state.opening,
+          telephone:this.state.telephone,
+          password:this.state.password,
+          email:this.state.email,
+          address:{
+            postcode: this.state.postcode,
+            number: this.state.number,
+            complement: this.state.complement
+          }
+        }),
+
+        headers: new Headers({
+          'Content-type': 'application/json',
+        })
+      }
+      fetch('http://127.0.0.1:8080/api/v1/admins', requestInfo)
+      .then(response => {
+          if(response.ok){
+              Alert.alert("user created successfully")
+              this.props.navigation.navigate('Login');              
+          }else{
+            Alert.alert('some data was entered incorrectly. Please try again.');
+          }
+      }).catch(error => {
+        console.warn(error)
+      }); 
+    }catch(Exception ){
+      Alert.alert('some data was entered incorrectly. Please try again.');
+    }
   }
 
   render() { 
@@ -79,16 +114,16 @@ onSelect(value, label) {
               <Input type='Text' style={{color: 'a6a6a6'}} onChangeText = {text => this.setState({name: text})}/> 
             </Item>  
             <Item floatingLabel> 
-              <Label style={inStyle.gray}>CPF*</Label> 
-              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({cpf: text})}/> 
+              <Label style={inStyle.gray}>CNPJ*</Label> 
+              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({cnpj: text})}/> 
             </Item> 
             <Item floatingLabel> 
-              <Label style={inStyle.gray}>E-mail*</Label> 
-            <Input type='Text' style={{color: 'a6a6a6'}} onChangeText = {text => this.setState({email: text})}/> 
+              <Label style={inStyle.gray}>Opening*</Label> 
+            <Input type='Date' style={{color: 'a6a6a6'}} onChangeText = {text => this.setState({opening: text})}/> 
             </Item>  
             <Item floatingLabel> 
               <Label style={inStyle.gray}>Contact number*</Label> 
-              <Input type='number'style={{color: 'a6a6a6'}} onChangeText = {text => this.setState({contactNumber: text})}/> 
+              <Input type='number'style={{color: 'a6a6a6'}} onChangeText = {text => this.setState({telephone: text})}/> 
             </Item>  
             <Item floatingLabel> 
               <Label style={inStyle.gray}>Password*</Label> 
@@ -98,7 +133,44 @@ onSelect(value, label) {
               <Label style={inStyle.gray}>Confirm Password*</Label> 
               <Input type='Password' style={{color: 'a6a6a6'}} secureTextEntry placeholderTextColor="gray" onChangeText = {text => this.setState({confirmPassword: text})}/>  
             </Item>  
-            <View>         
+            <Item floatingLabel> 
+              <Label style={inStyle.gray}>email*</Label> 
+              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({email: text})}/> 
+            </Item> 
+            <Item floatingLabel> 
+              <Label style={inStyle.gray}>postcode*</Label> 
+              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({postcode: text})}/> 
+            </Item> 
+            <Item floatingLabel> 
+              <Label style={inStyle.gray}>number*</Label> 
+              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({number: text})}/> 
+            </Item>  
+            <Item floatingLabel> 
+              <Label style={inStyle.gray}>complement*</Label> 
+              <Input keyboardType={'numeric'} style={{color: 'a6a6a6'}} placeholderTextColor="#gray" onChangeText = {text => this.setState({complement: text})}/> 
+            </Item> 
+            <View>       
+
+            {Platform.OS === 'ios' ?
+            <View style={{backgroundColor:'#FDC306',borderRadius:5, marginLeft:'5%'}}>
+            <Button style={styles.buttonStyle}
+              onPress={() => this.send()}
+              title="Confirm Register"
+              color="white"   
+              fontWeight="bold"           
+              accessibilityLabel="Confirm Register"
+            /></View>
+            :
+            <View style={{backgroundColor:'#FDC306',borderRadius:5, marginLeft:'5%'}}>
+            <Button style={styles.buttonStyle}
+              onPress={() => this.send()}
+              title="Confirm Register"
+              color="#FDC306"   
+              fontWeight="bold"
+              accessibilityLabel="Confirm Register"
+            />
+            </View>
+            }  
           
             </View> 
           </Form> 

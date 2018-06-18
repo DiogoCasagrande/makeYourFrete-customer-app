@@ -20,11 +20,11 @@
 								"type": "text/javascript",
 								"exec": [
 									"//Set urls",
-									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"local\", \"http://localhost:8080-1.6\");",
 									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
 									"",
 									"",
-									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+									"pm.environment.set(\"local\", \"http://localhost:8080-1.6\");"
 								]
 							}
 						},
@@ -157,11 +157,11 @@
 								"type": "text/javascript",
 								"exec": [
 									"//Set urls",
-									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"local\", \"http://localhost:8080-1.6\");",
 									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
 									"",
 									"",
-									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+									"pm.environment.set(\"local\", \"http://localhost:8080-1.6\");"
 								]
 							}
 						}
@@ -208,11 +208,11 @@
 								"type": "text/javascript",
 								"exec": [
 									"//Set urls",
-									"pm.globals.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");",
+									"pm.globals.set(\"local\", \"http://localhost:8080-1.6\");",
 									"pm.globals.set(\"tusk\", \"http://tusk.poggers.com.br/sniff\");",
 									"",
 									"",
-									"pm.environment.set(\"local\", \"http://tusk.poggers.com.br/tplink-1.6\");"
+									"pm.environment.set(\"local\", \"http://localhost:8080-1.6\");"
 								]
 							}
 						},

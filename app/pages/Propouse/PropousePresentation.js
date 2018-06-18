@@ -22,21 +22,7 @@ export default class PropousePresentation extends Component {
 
     componentDidMount(){
 
-        // const { params } = this.props.navigation.state;
-        // const idNews = params ? params.idNews : null;
-
-        // this.setState({newsTitle: params ? params.newsTitle : null})
-        // console.log(idNews);
-        
-        // var instance = axios.create({
-        //     baseURL: 'http://tusk.poggers.com.br/tplink-1.6/',
-        //     timeout: 1000,
-        //     headers: {'X-Custom-Header': 'foobar', 'Authorization':token}
-        //   });
    
-        //  instance.get(`http://tusk.poggers.com.br/tplink-1.6/api/news/${idNews}`)
-        //  .then(response => 
-        //     this.setState({ news: response.data.newsDetails }));         
     }
 
     setPrice(text){

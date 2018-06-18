@@ -24,12 +24,12 @@ export default class Comments extends Component {
     // console.log(idTraining);
 
     var instance = axios.create({
-      baseURL: 'http://tusk.poggers.com.br/tplink-1.6/api/',
+      baseURL: 'http://localhost:8080-1.6/api/',
       timeout: 1000,
       headers: {'X-Custom-Header': 'foobar', 'Authorization':token}
     });
 
-    instance.get('http://tusk.poggers.com.br/tplink-1.6/api/auth/info',{timeout: 3000})
+    instance.get('http://localhost:8080-1.6/api/auth/info',{timeout: 3000})
        .then(response => this.setState({ name: response.data.name }));
   
     }

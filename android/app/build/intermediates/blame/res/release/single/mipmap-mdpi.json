@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/diogocasagrande/Documents/diogo casagrande/LearningApp/android/app/build/intermediates/res/merged/release/mipmap-mdpi/ic_launcher.png",
+        "source": "/Users/diogocasagrande/Documents/diogo casagrande/LearningApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/diogocasagrande/Documents/diogo casagrande/makeYourFrete-customer-app/android/app/build/intermediates/res/merged/release/mipmap-mdpi/ic_launcher.png",
+        "source": "/Users/diogocasagrande/Documents/diogo casagrande/makeYourFrete-customer-app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]

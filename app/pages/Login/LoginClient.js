@@ -3,7 +3,7 @@ import RestClient from 'react-native-rest-client';
 export default class LoginClient extends RestClient {
 
 constructor (authToken){
-    super('http://tusk.poggers.com.br/tplink-1.0.3/api',{
+    super('http://localhost:8080-1.0.3/api',{
     });
     } 
     login(username, password){

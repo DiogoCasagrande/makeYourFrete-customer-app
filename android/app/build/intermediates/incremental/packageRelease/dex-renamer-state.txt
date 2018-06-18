@@ -1,0 +1,4 @@
+#Wed Jun 06 03:06:31 BRT 2018
+base.0=/Users/diogocasagrande/Documents/diogo casagrande/makeYourFrete-customer-app/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/diogocasagrande/Documents/diogo casagrande/makeYourFrete-customer-app/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex

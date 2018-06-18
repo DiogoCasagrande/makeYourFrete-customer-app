@@ -29,7 +29,7 @@ class Login {
     }
 
     login(){
-        fetch('tusk.poggers.com.br/tplink-1.0.3/api/auth/signup',requestInfo)
+        fetch('localhost:8080-1.0.3/api/auth/signup',requestInfo)
         .then(response => {
             if(response.ok){
                 console.log(response.status);

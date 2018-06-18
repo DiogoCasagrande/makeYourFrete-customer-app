@@ -1,7 +1,7 @@
 import { create } from 'apisauce';
 
 const api = create({
-    baseUrl: 'http://tusk.poggers.com.br/tplink-1.0.3/api',
+    baseUrl: 'http://localhost:8080-1.0.3/api',
 });
 
 api.addResponseTransform(response => {

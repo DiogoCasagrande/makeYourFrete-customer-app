@@ -50,7 +50,7 @@ export default class UserHomePresentation extends Component{
             <View style={UserStyles.container}>
               <Text style={UserStyles.titles}>Notificacoes</Text>
                 <Button medium transparent warning style={styles.paddingAdjust}
-                        onPress={() =>  this.props.navigation.navigate('newsFeed')}>
+                        onPress={() =>  this.props.navigation.navigate('createPropouse')}>
                     <Icon style={{marginRight:'1%'}} name="md-add" />
                 </Button>
             </View> 
