@@ -44,7 +44,7 @@ export default class LoginPresentation extends Component {
       const requestInfo = {
         method: 'POST',
         body: JSON.stringify({
-          login: this.state.user,
+          email: 'b@b',
           password: this.state.password
         }),
         headers: new Headers({
@@ -54,14 +54,12 @@ export default class LoginPresentation extends Component {
       fetch('http://127.0.0.1:8080/api/v1/companies/auth', requestInfo)
       .then(response => {
           if(response.ok){
-              token = response.headers.get('Access-Token');
-              AsyncStorage.setItem('token:key', token);
-              AsyncStorage.getItem('token:key').then(tokenKey => console.warn(tokenKey));
-              this.props.navigation.navigate('drawerStack');              
+            this.props.navigation.navigate('drawerStack');              
           }else{
             Alert.alert('Incorrect user or password. Please try again.');
           }
       }).catch(error => {
+        console.log("fucking error")
         console.warn(error)
       }); 
     }catch(Exception ){
@@ -69,7 +67,6 @@ export default class LoginPresentation extends Component {
     }
   }
 
-  //Rendered Elements
   render() {
     return (
       

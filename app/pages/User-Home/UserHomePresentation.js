@@ -26,6 +26,11 @@ export default class UserHomePresentation extends Component{
     isLandscape: false,
   };
 
+  componentDidMount(){
+    
+
+}
+
 
   async _onRefresh() {
     this.setState({refreshing: true});
@@ -61,7 +66,7 @@ export default class UserHomePresentation extends Component{
             <CardItem >
               <Body  style={styles.container}>
                 <Text style={styles.title} numberOfLines={1}>
-                  fulano se candidatou na sua proposta             
+                  USER_NAME se candidatou na sua proposta             
                 </Text> 
                 </Body>         
                 <Body  style={styles.container}>
@@ -79,7 +84,7 @@ export default class UserHomePresentation extends Component{
             <CardItem >
               <Body  style={styles.container}>
                 <Text style={styles.title} numberOfLines={1}>
-                fulano se candidatou na sua proposta             
+                USER_NAME se candidatou na sua proposta             
                 </Text> 
                 </Body>         
                 <Body  style={styles.container}>
@@ -97,7 +102,7 @@ export default class UserHomePresentation extends Component{
             <CardItem >
               <Body  style={styles.container}>
                 <Text style={styles.title} numberOfLines={1}>
-                fulano se candidatou na sua proposta             
+                USER_NAME se candidatou na sua proposta             
                 </Text> 
                 </Body>         
                 <Body  style={styles.container}>
