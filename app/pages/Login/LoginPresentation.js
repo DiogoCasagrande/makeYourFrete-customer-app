@@ -44,14 +44,14 @@ export default class LoginPresentation extends Component {
       const requestInfo = {
         method: 'POST',
         body: JSON.stringify({
-          email: 'b@b',
+          email: this.state.user,
           password: this.state.password
         }),
         headers: new Headers({
           'Content-type': 'application/json',
         })
       }
-      fetch('http://127.0.0.1:8080/api/v1/companies/auth', requestInfo)
+      fetch('http://make-your-frete.herokuapp.com/api/v1/companies/auth', requestInfo)
       .then(response => {
           if(response.ok){
             this.props.navigation.navigate('drawerStack');              

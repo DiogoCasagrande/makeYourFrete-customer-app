@@ -85,7 +85,7 @@ onSelect(value, label) {
           'Content-type': 'application/json',
         })
       }
-      fetch('http://127.0.0.1:8080/api/v1/companies', requestInfo)
+      fetch('http://make-your-frete.herokuapp.com/api/v1/companies', requestInfo)
       .then(response => {
           if(response.ok){
               Alert.alert("user created successfully")
